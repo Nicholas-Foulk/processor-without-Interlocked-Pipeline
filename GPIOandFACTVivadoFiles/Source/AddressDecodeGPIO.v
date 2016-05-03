@@ -8,6 +8,7 @@ reg [3:0] cw;
 assign {WE1,WE2,RdSel} = cw;
 always@(*)
 begin
+  if(WE)
     case(A1)
     2'b00:
         begin

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/30/2016 02:41:20 PM
+// Create Date: 02/10/2016 03:15:37 PM
 // Design Name: 
-// Module Name: global_mux
+// Module Name: count
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,18 +19,15 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-//no longer need
-module global_mux #(parameter WIDTH = 32) (
-  input                 s, 
-  input   [WIDTH-1:0]  d0, 
-  input   [WIDTH-1:0]  d1, 
-  output  [WIDTH-1:0]  y 
-  );
- always@(*)
-     begin
-         case(s)
-             1'b0:y = d0;
-             1'b1:y = d1;
-         endcase
-     end
- endmodule
+
+module count(input clk, ld_count, EN ,input[3:0]D, output reg[3:0]Q  );
+
+always@(posedge clk)
+begin
+    if(ld_count)
+        Q=D;
+        else if(EN)
+        Q=Q-4'b0001;
+end        
+        
+endmodule

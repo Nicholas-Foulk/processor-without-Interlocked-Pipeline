@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/30/2016 02:41:20 PM
+// Create Date: 02/10/2016 03:41:00 PM
 // Design Name: 
-// Module Name: global_mux
+// Module Name: multiplier
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,18 +19,10 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-//no longer need
-module global_mux #(parameter WIDTH = 32) (
-  input                 s, 
-  input   [WIDTH-1:0]  d0, 
-  input   [WIDTH-1:0]  d1, 
-  output  [WIDTH-1:0]  y 
-  );
- always@(*)
-     begin
-         case(s)
-             1'b0:y = d0;
-             1'b1:y = d1;
-         endcase
-     end
- endmodule
+
+module multi(input [3:0]count, input [31:0] register, output reg [31:0] out);
+always@(count, register)
+begin
+ assign out=count*register;
+end
+endmodule

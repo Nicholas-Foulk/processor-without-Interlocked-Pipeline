@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/30/2016 02:41:20 PM
+// Create Date: 02/10/2016 02:33:11 PM
 // Design Name: 
-// Module Name: global_mux
+// Module Name: compare
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,18 +19,14 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-//no longer need
-module global_mux #(parameter WIDTH = 32) (
-  input                 s, 
-  input   [WIDTH-1:0]  d0, 
-  input   [WIDTH-1:0]  d1, 
-  output  [WIDTH-1:0]  y 
-  );
- always@(*)
-     begin
-         case(s)
-             1'b0:y = d0;
-             1'b1:y = d1;
-         endcase
-     end
- endmodule
+
+module comparator(input [3:0]A, input [3:0] B ,output reg smaller);
+
+always@(A,B)
+begin
+    if(A[3:0] <= B[3:0])
+        smaller = 1'b1;
+    else
+        smaller = 1'b0;
+end
+endmodule

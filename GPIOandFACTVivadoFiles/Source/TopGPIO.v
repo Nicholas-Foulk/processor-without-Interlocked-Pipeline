@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-module TopGPIO(A,WE,gpI1,gpI2,WD,rst,clk,RD,gpO1,gpO2);
+module TopGPIO(clk,rst,A,WE,gpI1,gpI2,WD,RD,gpO1,gpO2);
 
 input [1:0] A;
 input WE;
@@ -17,5 +17,5 @@ AddressDecodeGPIO GPIO0(A,WE,WE1,WE2,RdSel);
 
 ParaRegFile #(32) GPIO1(clk,WE1,1'b0,WD,gpO1);
 ParaRegFile #(32) GPIO2(clk,WE2,1'b0,WD,gpO2);
-mux3              GPIO3(RdSel,gpI1,gpI2,gpO1,gpO2,RD);
+mux3        #(32) GPIO3(RdSel,gpI1,gpI2,gpO1,gpO2,RD);
 endmodule
